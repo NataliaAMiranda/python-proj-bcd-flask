@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2> Editar Contato</h2>
+
+    <form method="POST" action=" {{ url_for('editar_pessoa') }}">
+
+        <label>Nome:</label><br>
+        <input type="text" name="nome" value="{{ pessoa.nome }}">
+        <P></P>
+        <label>Telefone:</label> <br>
+        {% for telefone in telefones %}
+            {% set tel= 'tel-' ~telefone.idTelefone %}
+            <input type="text" name="{{ tel }}" value="{{ telefone.numero }}"><br>
+        {% endfor %}
+
+        <input type="hidden" name="idP" value="{{ pessoa.idPessoa }}">
+        <button type="submit"> Enviar </button>
+    </form>
+
+{% endblock %}
